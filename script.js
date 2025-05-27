@@ -21,10 +21,10 @@ function initTechCarousel() {
   if (!slider) return;
   
   // Create technology tags - duplicate for seamless loop
-  const loopedTechnologies = [...technologies, ...technologies];
+  const loopedTechnologies = [...technologies, ...technologies, ...technologies, ...technologies];
   
   let carouselHTML = "";
-  loopedTechnologies.forEach(tech => {
+  loopedTechnologies.forEach((tech) => {
     carouselHTML += `<button class="language">${tech}</button>`;
   });
   

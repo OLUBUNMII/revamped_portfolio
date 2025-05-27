@@ -283,13 +283,14 @@ p span {
 
 .slider {
   display: flex;
-  animation: scroll 20s linear infinite;
+  /* display: inline-block; */
+  animation: scroll 30s linear infinite;
   gap: 1rem;
 }
 
 @keyframes scroll {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* This makes the items scroll. If content is duplicated, it appears seamless. */
+  100% { transform: translateX(-200%); } /* This makes the items scroll. If content is duplicated, it appears seamless. */
 }
 
 .language {
