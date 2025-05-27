@@ -1,0 +1,447 @@
+:root {
+  --color-primary: #ff4d00;
+  --color-secondary: #2563eb;
+  --color-tertiary: #1e40af;
+  --color-white: #ffffff;
+  --color-light: #f4f7fa;
+  --color-black: #111827;
+  --color-dark: #374151;
+  --color-gray: #9ca3af;
+  
+  /* Container widths */
+  --container-width-lg: 82%;
+  --container-width-md: 90%;
+  --container-width-sm: 94%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  font-family: 'Inter', 'Poppins', sans-serif;
+  font-weight: 300;
+  color: var(--color-dark);
+  line-height: 1.7;
+  background-color: var(--color-white);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-black);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 { font-size: 4rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 1.8rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; } /* Base size, can be overridden */
+h6 {
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+img {
+  width: 25%;
+  object-fit: cover;
+  display: block;
+}
+
+.container {
+  width: var(--container-width-lg);
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 7rem 0;
+  margin: 2rem 0;
+}
+
+/* ======== NAVBAR ============ */
+nav {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+nav.scrolled {
+  height: 4rem;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.nav__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav_logo h4 {
+  font-weight: 700;
+  transition: all 300ms ease;
+}
+
+.nav_logo h4 span {
+  color: var(--color-primary);
+}
+
+.nav_logo:hover h4 {
+  transform: scale(1.05);
+}
+
+.nav__menu {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+nav button {
+  display: none;
+}
+
+.btn-contact {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: 0.8rem 1.6rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 300ms ease;
+}
+
+.btn-contact:hover {
+  background: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-3px);
+}
+
+/* ================ HEADER (Modified for Centered Layout) =========== */
+header {
+  min-height: 90vh; /* Ensure a substantial hero area */
+  padding-top: 7rem; /* Adjust to give space from fixed navbar */
+  padding-bottom: 4rem; /* Bottom padding */
+  display: flex; /* Use flexbox to center content */
+  align-items: center; /* Vertical centering for .header__container */
+  justify-content: center; /* Horizontal centering for .header__container */
+  text-align: center; /* Center text for all children by default */
+  position: relative;
+  overflow-x: hidden; /* Prevent horizontal scroll from carousel animation */
+}
+
+.header__container {
+  /* Was: grid, grid-template-columns: 1fr 1fr; */
+  /* Now: A single column, centered by the parent 'header' flex settings. */
+  /* It will contain header__left as its primary child. */
+  width: 100%; /* Takes full width of the .container defined in parent section */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center its direct children (header__left) */
+}
+
+.header__left {
+  /* This is the main content block, will be centered by .header__container */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center its own content (h6, h5, p, socials, carousel) */
+  width: 100%; /* Takes width from .header__container */
+  max-width: 700px; /* Constrain the width of the text content for readability */
+  /* Removed height: 100%; let content define height */
+}
+
+.bio {
+  /* .bio wraps the text content. It will be centered due to .header__left's text-align: center */
+  max-width: 100%; /* It will be constrained by .header__left's max-width */
+}
+
+.header__left h6 {
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.header__left h5 {
+  font-size: 2.2rem; /* Adjusted for better hierarchy */
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block; /* Important for ::after positioning */
+}
+
+.header__left h5::after {
+  content: '';
+  position: absolute;
+  left: 50%; /* Center the underline */
+  transform: translateX(-50%); /* Center the underline */
+  bottom: -8px;
+  height: 4px;
+  width: 60px;
+  background: var(--color-primary);
+}
+
+.header__left p {
+  margin: 1.5rem 0 2.5rem;
+  font-size: 1.1rem;
+}
+
+p span {
+  font-weight: 500;
+}
+
+.one { color: var(--color-primary); }
+.two { color: var(--color-secondary); }
+.three { color: var(--color-tertiary); }
+.four { color: #f59e0b; }
+.five { color: var(--color-black); }
+.six { color: rgb(0, 92, 0)}
+
+/* Removed .header__right, .header__image, .header__right-bg, and .header__image:hover styles */
+/* Removed @keyframes pulse and .header__right-bg styles */
+
+.header__socials {
+  /* Styles for the moved social links */
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center; /* Ensure icons are centered */
+  margin: 1.5rem 0 2.5rem 0; /* Added margin for spacing */
+  /* position, bottom, right properties removed */
+}
+
+.header__socials li a {
+  background: var(--color-light);
+  color: var(--color-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  transition: all 300ms ease;
+}
+
+.header__socials li a:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  transform: translateY(-5px);
+}
+
+.btn {
+  background: var(--color-black);
+  color: var(--color-white);
+  display: inline-block;
+  padding: 0.9rem 1.8rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.btn:hover {
+  background: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-3px);
+}
+
+.btn i {
+  margin-right: 0.5rem;
+}
+
+/* Tech carousel */
+.tech-carousel {
+  margin-top: 2rem;
+  overflow: hidden;
+  position: relative;
+  width: 100%; /* Will take the width of .header__left */
+}
+
+.slider {
+  display: flex;
+  animation: scroll 20s linear infinite;
+  gap: 1rem;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* This makes the items scroll. If content is duplicated, it appears seamless. */
+}
+
+.language {
+  padding: 0.5rem 1rem;
+  background: var(--color-light);
+  color: var(--color-black);
+  border-radius: 4px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 300ms ease;
+  border: none;
+  cursor: default;
+}
+
+.language:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Footer */
+footer {
+  background-color: var(--color-light);
+  padding: 2rem 0;
+  text-align: center;
+}
+
+footer ul {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+footer ul li {
+  position: relative;
+}
+
+footer ul li::before {
+  content: "";
+  display: none;
+}
+
+footer ul li a {
+  color: var(--color-dark);
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+footer ul li a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+footer ul li a:hover {
+  color: var(--color-primary);
+}
+
+footer ul li a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Media Queries - Adjustments for new centered layout */
+@media screen and (max-width: 1024px) {
+  .container {
+    width: var(--container-width-md);
+  }
+  h1 { font-size: 3.2rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.6rem; }
+  .header__left h5 { font-size: 2rem; }
+
+  /* Removed styles for .header__container gap, .header__right-bg, .header__image as they are not used or handled by base styles */
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: var(--container-width-sm);
+  }
+
+  nav button {
+    display: inline-block;
+    background: transparent;
+    font-size: 1.8rem;
+    color: var(--color-black);
+    cursor: pointer;
+  }
+
+  nav button#close-menu-btn {
+    display: none;
+  }
+
+  .nav__menu {
+    position: fixed;
+    top: 5rem; /* Should match nav height */
+    right: -100%;
+    height: fit-content;
+    width: 80%;
+    flex-direction: column;
+    gap: 0;
+    padding: 2rem;
+    background: var(--color-white);
+    box-shadow: -2rem 0 2rem rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .nav__menu.active {
+    right: 0;
+  }
+
+  /* .header__container styles for grid-template-columns and text-align removed as base style is now single column and centered */
+  /* .header__left h5::after centering is now default */
+  
+  .bio {
+    /* max-width: 100%; */ /* Already set */
+    /* padding: 0 1rem; */ /* Text-align center from header should handle spacing */
+  }
+
+  /* .header__image, .header__right-bg styles removed */
+  /* .header__socials position static and justify-content center is now default behavior */
+  
+  /* These might be for a different section not provided in the HTML, commenting out for now */
+  /* .portfolio__head {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .portfolio__projects {
+    grid-template-columns: 1fr;
+  } */
+}
+
+@media screen and (max-width: 480px) {
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 1.8rem; }
+  h3 { font-size: 1.4rem; }
+  .header__left h5 { font-size: 1.8rem; }
+
+  /* Removed .header__right-bg, .header__image styles */
+
+  /* This class is not in the provided HTML, commenting out */
+  /* a.button-slide {
+    min-width: 80%;
+    font-size: 1rem;
+  } */
+}
